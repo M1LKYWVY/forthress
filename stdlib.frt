@@ -252,6 +252,7 @@ drop
 
 include string.frt
 include hash.frt 
+include words.frt
 
 : enum 0 repeat
     inbuf word drop dup

@@ -10,5 +10,27 @@
 ( 5 prime )
 ( 6 prime )
 ( 7 prime) 
-: push_mem dup dup 8 / swap 8 % if 1 + else then allot dup rot swap ! .S ;
-16 push_mem
+( m" test" 1 + c@ 2 heap-alloc dup swap .S
+140300132548677
+140300132548677
+101
+rot
+.S
+101
+140300132548677
+140300132548677
+swap
+.S
+140300132548677
+101
+140300132548677
+c!
+.S
+140300132548677
+1 printc
+e
+16 push_mem )
+( m" Filicchkin" string-hash 3 % .S )
+( m" Filitchkin" string-hash 3 % .S )
+m" hello" m"  world" swap dup rot dup rot swap
+count swap count swap .S

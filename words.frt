@@ -7,7 +7,8 @@ if
     ." value is not even " cr 
 else 
     ." value is even " cr 
-then ; IMMEDIATE
+then 
+;
 
 ( : parity 2 % if 0 else 1 then ; IMMEDIATE )
 
@@ -37,32 +38,38 @@ if
     ." value is prime " cr 
 else 
     ." value is complex " cr 
-then ; IMMEDIATE
+then 
+;
 
 ( : prime dup 2 < if 0 exit else then dup 2 = if 1 exit else then dup dup 2 do if dup r@ % else 0 then loop if 1 else 0 then ; IMMEDIATE )
 
-( value -- |
-allocating memory in according with value )
+( value -- addr |
+allocating memory in according with value amd stores value in menory )
 : push_mem 
+dup 0 = 
+if
+    1 allot dup rot swap ! exit
+else 
+then
 dup dup 8 / swap 8 % 
 if 
     1 + 
 else 
 then 
-allot dup rot swap ! ; IMMEDIATE
+allot dup rot swap ! 
+;
 
 
 ( x -- |
-Second task made with chages (5 task in book ) )
-
-: prime 
+Second task made with chages )
+: prime_alloc
 dup 2 < 
 if 
     0 push_mem exit 
 else 
 then 
 dup 2 = 
-if
+if 
     1 push_mem exit 
 else 
 then 
@@ -71,14 +78,31 @@ do
 if 
     dup r@ % 
 else 
-    0
+    0 
 then 
 loop 
 if 
-    1 push_mem
+    1 push_mem 
 else 
-    0 push_mem
-then ; IMMEDIATE
+    0 push_mem 
+then 
+;
+
+
+( x y -- x y x y |
+copies given values )
+: dup_twice
+over swap dup rot swap 
+;
+
+( from_addr to_addr -- |
+copies one byte from from_addr to to_addr )
+: copy_char 
+c@ swap c! 
+;
+
+
+
 
 
 

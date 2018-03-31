@@ -1,3 +1,10 @@
+( x -- x+1 |
+increments given value )
+: inc 
+1 +
+;
+
+
 ( x -- | 
 check parity of value | 
 in case of even prints "value is even", in other case prints "value is not even". )
@@ -89,13 +96,6 @@ then
 ;
 
 
-( x -- x+1 |
-increments given value )
-: inc 
-1 +
-;
-
-
 ( x y -- x+1 y+1 |
 increments to given values )
 : inc_twice 
@@ -153,3 +153,18 @@ dup
 1 = 
 until 
 ;
+
+( value --  |
+makes collatz vector and prints it )
+( : collatz 
+repeat
+dup 2 %
+if
+    3 * inc dup . cr
+else
+    2 / dup . cr
+then
+dup
+1 = 
+until
+; )

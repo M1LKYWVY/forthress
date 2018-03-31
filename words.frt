@@ -89,6 +89,20 @@ then
 ;
 
 
+( x -- x+1 |
+increments given value )
+: inc 
+1 +
+;
+
+
+( x y -- x+1 y+1 |
+increments to given values )
+: inc_twice 
+inc swap inc swap
+;
+
+
 ( x y -- x y x y |
 copies given values )
 : dup_twice
@@ -102,7 +116,15 @@ c@ swap c!
 ;
 
 
-
+( quantity from_addr to_addr -- |
+copies given amount of bytes from from_addr to to_addr )
+: copy_string 
+dup count 0 
+do 
+dup_twice
+copy_char
+1 + swap 1 + swap 
+drop drop ;
 
 
 

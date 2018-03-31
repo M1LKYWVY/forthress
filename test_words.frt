@@ -10,3 +10,5 @@
 ( 5 prime )
 ( 6 prime )
 ( 7 prime) 
+: push_mem dup dup 8 / swap 8 % if 1 + else then allot dup rot swap ! .S ;
+16 push_mem

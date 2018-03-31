@@ -119,12 +119,18 @@ c@ swap c!
 ( quantity from_addr to_addr -- |
 copies given amount of bytes from from_addr to to_addr )
 : copy_string 
-dup count 0 
+0 
 do 
-dup_twice
-copy_char
-1 + swap 1 + swap 
+dup_twice 
+copy_char 
+inc_twice 
+loop
 drop drop ;
+
+( first_str_addr second_str_addr -- result_addr |
+concat given strings returns new addres )
+: concat 
+;
 
 
 

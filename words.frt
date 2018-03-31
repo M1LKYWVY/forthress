@@ -139,3 +139,17 @@ swap dup rot + 0x 0 swap c!
 ; 
 
 
+( value -- [colltz_vector] | 
+makes colltaz vector on stack )
+: collatz
+repeat
+dup dup 2 % 
+if
+    3 * inc 
+else 
+    2 /
+then
+dup
+1 = 
+until 
+;

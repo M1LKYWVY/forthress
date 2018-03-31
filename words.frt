@@ -53,7 +53,7 @@ else
 then
 dup dup 8 / swap 8 % 
 if 
-    1 + 
+    inc  
 else 
 then 
 allot dup rot swap ! 
@@ -140,7 +140,7 @@ swap dup rot + 0x 0 swap c!
 
 
 ( value -- [colltz_vector] | 
-makes colltaz vector on stack )
+makes collataz vector on stack )
 : collatz
 repeat
 dup dup 2 % 

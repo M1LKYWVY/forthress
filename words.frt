@@ -130,12 +130,12 @@ drop drop
 
 
 ( first_str_addr second_str_addr -- result_addr |
-concat given strings returns new addres )
+concat given strings returns new addres ) 
 : concat
-.S ." start" cr swap dup count >r swap dup count >r dup count rot dup 
-count rot + rot swap 1 + heap-alloc dup >r over dup count 
-copy_string count r@ + swap dup count copy_string r> r> r>
+swap dup count >r swap dup count >r dup count rot dup 
+count rot + rot swap inc heap-alloc dup >r over dup count 
+copy_string count r@ + swap dup count copy_string r> r> r> inc + 
+swap dup rot + 0x 0 swap c!
 ; 
-
 
 

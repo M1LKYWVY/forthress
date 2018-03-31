@@ -32,5 +32,12 @@ e
 16 push_mem )
 ( m" Filicchkin" string-hash 3 % .S )
 ( m" Filitchkin" string-hash 3 % .S )
-m" hello" m"  world" swap dup rot dup rot swap
-count swap count swap .S
+m" hello" m"  world" concat prints cr
+m" test" m" hello" concat prints cr 
+( : concat
+.S ." start" cr swap dup count >r swap dup count >r dup count rot dup 
+count rot + rot swap 1 + heap-alloc dup >r over dup count 
+copy_string count r@ + swap dup count copy_string r> r> r>
+; )
+
+

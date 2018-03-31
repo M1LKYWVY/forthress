@@ -125,7 +125,8 @@ dup_twice
 copy_char 
 inc_twice 
 loop
-drop drop ;
+drop drop 
+;
 
 ( first_str_addr second_str_addr -- result_addr |
 concat given strings returns new addres )

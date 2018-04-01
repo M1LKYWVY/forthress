@@ -8,29 +8,30 @@ increments given value )
 ( x -- | 
 check parity of value | 
 in case of even prints "value is even", in other case prints "value is not even". )
-: parity 
+( : parity 
 2 % 
 if 
     ." value is not even " cr 
 else 
     ." value is even " cr 
 then 
-;
-
-( : parity 2 % if 0 else 1 then ; IMMEDIATE )
+; )
+( x -- parity | in case of even returns 1, in other case returns 0 )
+: parity 2 % if 0 else 1 then ;
 
 
 ( x -- | 
 check prime of value | 
 to come over bug in forthress with iteration was created simple idea: added conditions. )
-: prime 
+( : is_prime 
 dup 2 < 
 if 
-    ." can not check value " cr exit 
+    drop ." can not check value " cr exit 
 else 
 then 
 dup 2 = 
-    if ." value is prime " cr exit 
+if 
+    drop ." value is prime " cr exit 
 else 
 then 
 dup dup 2 
@@ -38,7 +39,7 @@ do
     if 
         dup r@ % 
     else 
-    0 
+        0 
     then 
 loop 
 if 
@@ -46,9 +47,38 @@ if
 else 
     ." value is complex " cr 
 then 
-;
+drop
+; )
 
-( : prime dup 2 < if 0 exit else then dup 2 = if 1 exit else then dup dup 2 do if dup r@ % else 0 then loop if 1 else 0 then ; IMMEDIATE )
+
+( x -- prime | 
+check prime of value | 
+to come over bug in forthress with iteration was created simple idea: added conditions. )
+: is_prime 
+dup 2 < 
+if 
+    drop 0 exit 
+else 
+then 
+dup 2 = 
+if 
+    drop 1 exit 
+else 
+then 
+dup 2 
+do 
+    if 
+        dup r@ % 
+    else 
+        0 
+    then 
+loop 
+if 
+    1
+else 
+    0 
+then 
+; 
 
 ( value -- addr |
 allocating memory in according with value amd stores value in menory )
@@ -68,19 +98,19 @@ allot dup rot swap !
 
 
 ( x -- |
-Second task made with chages )
+Second task made with changes )
 : prime_alloc
 dup 2 < 
 if 
-    0 push_mem exit 
+    drop 0 push_mem exit 
 else 
 then 
 dup 2 = 
 if 
-    1 push_mem exit 
+    drop 1 push_mem exit 
 else 
 then 
-dup dup 2 
+dup 2 
 do 
 if 
     dup r@ % 

@@ -82,7 +82,7 @@ then
 
 ( value -- addr |
 allocating memory in according with value amd stores value in menory )
-: push_mem 
+( : push_mem 
 dup 0 = 
 if
     1 allot dup rot swap ! exit
@@ -94,8 +94,14 @@ if
 else 
 then 
 allot dup rot swap ! 
-;
+; )
 
+
+( -- addr |
+allocating 8 bite as 1 cell in memory returns address )
+: push_mem 
+1 allot 
+;
 
 ( x -- |
 Second task made with changes )
@@ -171,7 +177,7 @@ swap dup rot + 0x 0 swap c!
 
 ( value -- [colltz_vector] | 
 makes collataz vector on stack )
-: collatz
+( : collatz
 repeat
 dup dup 2 % 
 if
@@ -182,11 +188,11 @@ then
 dup
 1 = 
 until 
-;
+; )
 
 ( value --  |
 makes collatz vector and prints it )
-( : collatz 
+: collatz 
 repeat
 dup 2 %
 if
@@ -197,4 +203,4 @@ then
 dup
 1 = 
 until
-; )
+; 
